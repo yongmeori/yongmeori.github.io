@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>농촌체험휴양마을 용머리고을 | 익산 용안면</title>
+  <meta name="description" content="전북 익산시 용안면 금강변에 위치한 농촌체험휴양마을 용머리고을. 가족·단체 온돌 객실, 전통 체험 프로그램, 세미나실 및 부대시설 안내." />
+
+  <!-- Tailwind CSS (별도 빌드 과정 없이 단일 HTML에서 바로 동작) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: 제목용 Noto Serif KR & 본문용 Pretendard -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ivory: '#FAF8F5',
+            cream: '#F3EFE8',
+            forest: {
+              DEFAULT: '#2D4A3E',
+              dark: '#1F352C',
+              light: '#3E6354',
+              soft: '#EBF0ED',
+            },
+            terracotta: {
+              DEFAULT: '#B86B43',
+              dark: '#9A5633',
+              soft: '#F9EFE9',
+            },
+            charcoal: '#232725',
+          },
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif KR"', 'serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    /* 기본 타이포그래피 및 세밀한 시각 스타일 */
+    body {
+      background-color: #FAF8F5;
+      color: #232725;
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+      word-break: keep-all;
+    }
+
+    /* 히어로 영역 자연 풍경 감성 배경 + 사진 오버레이 */
+    .hero-bg {
+      background-color: #1E352B;
+    }
+
+    /* 한지/자연 질감의 은은한 도트 패턴 */
+    .paper-pattern {
+      background-image: radial-gradient(rgba(45, 74, 62, 0.08) 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+
+    /* 스크롤바 숨김 유틸리티 (모바일 탭 가로 스크롤용) */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-forest selection:text-white pb-20 md:pb-0">
+
+  <!-- =====================================================================
+       [유지보수 및 사진 교체 안내]
+       1. 요금, 운영 시간, 계절 공지 등은 아래 SITE_CONFIG 값만 수정하세요.
+       2. 실제 현장 사진(노션에 있는 객실·체험 사진)을 넣으실 때는:
+          GitHub 저장소에 'images' 폴더를 만들고 사진을 업로드한 뒤,
+          각 항목의 image 경로(예: 'images/room-4.jpg')에 맞춰 파일명만 올리시면 됩니다.
+          (아직 로컬 사진이 없어도 fallbackImage가 자동으로 깔끔하게 표시됩니다!)
+  ====================================================================== -->
+  <script>
+    const SITE_CONFIG = {
+      // 1. 마을 기본 정보 및 연락처
+      villageName: '농촌체험휴양마을 용머리고을',
+      shortName: '용머리고을',
+      domain: 'yongmeori.com',
+      phoneLandline: '063-861-9908',
+      phoneMobile: '010-3750-9908',
+      hoursWeekday: '평일 · 토요일 09:00 ~ 18:00',
+      hoursSunday: '일요일 13:00 ~ 18:00',
+      address: '전북특별자치도 익산시 용안면 강변로 1087-12',
+      addressDetail: '농촌체험휴양마을 용머리고을',
+
+      // 2. 상단 계절/임시 공지 배너 (active를 true로 바꾸면 상단에 공지 띠가 표시됩니다)
+      notice: {
+        active: false, // 공지를 띄울 때는 true, 숨길 때는 false 로 변경하세요.
+        badge: '계절 운영 안내',
+        text: '여름철 야외 물놀이장 운영 일정 및 단체 체험 예약은 전화로 사전 문의해 주세요.',
+      },
+
+      // 3. 메인 히어로 문구 및 배경 사진
+      hero: {
+        eyebrow: '전북 익산 용안면 · 금강변 생태 휴양 마을',
+        titleMain: '자연과 쉼이 어우러진 정겨운',
+        titleHighlight: '농촌체험휴양마을, 용머리고을',
+        description:
+          '금강변의 청정한 바람과 따스한 시골의 정이 머무는 곳입니다. 가족과 단체가 함께 쉬어가는 고즈넉한 객실부터 오감을 깨우는 전통 체험까지 정성껏 준비했습니다.',
+        // GitHub에 'images/hero-village.jpg'를 올리면 자동 적용, 없으면 아래 자연 풍경 사진 표시
+        image: 'images/hero-village.jpg',
+        fallbackImage:
+          'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80',
+      },
+
+      // 4. 체험 프로그램 목록 (사진 + 상세 안내)
+      programs: [
+        {
+          id: 'oranda',
+          title: '오란다(쌀강정) 만들기',
+          price: '15,000원',
+          unit: '1인',
+          duration: '약 60분',
+          badge: '여름철 외 운영',
+          badgeType: 'season',
+          image: 'images/exp-oranda.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80',
+          description:
+            '고소하게 튀겨낸 곡물에 조청을 버무려 직접 틀에 넣고 굳혀 예쁘게 포장해 가는 남녀노소 인기 간식 체험입니다.',
+          target: '가족 · 어린이 · 단체 추천',
+          iconType: 'cookie',
+        },
+        {
+          id: 'lantern',
+          title: '소원등 만들기',
+          price: '14,000원',
+          unit: '1인',
+          duration: '약 45분',
+          badge: '상시 운영',
+          badgeType: 'default',
+          image: 'images/exp-lantern.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1513519245088-0e12902e5a38?auto=format&fit=crop&w=800&q=80',
+          description:
+            '한지와 나무 틀에 나만의 소원과 정성스러운 글귀를 담아 은은하게 빛나는 전통 조명등을 완성하는 공예 체험입니다.',
+          target: '가족 · 학생 · 야간 숙박객 추천',
+          iconType: 'lantern',
+        },
+        {
+          id: 'scarecrow',
+          title: '허수아비 만들기',
+          price: '10,000원',
+          unit: '1인',
+          duration: '약 60분',
+          badge: '상시 운영',
+          badgeType: 'default',
+          image: 'images/exp-scarecrow.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1508193638397-1c4234db14d8?auto=format&fit=crop&w=800&q=80',
+          description:
+            '정겨운 농촌의 상징인 허수아비에 은은한 조명을 더해 나만의 개성 있는 소품으로 직접 꾸며보는 체험입니다.',
+          target: '유아 · 초등 체험학습 추천',
+          iconType: 'scarecrow',
+        },
+        {
+          id: 'kite',
+          title: '전통 연날리기',
+          price: '10,000원',
+          unit: '1인',
+          duration: '약 45분',
+          badge: '상시 운영',
+          badgeType: 'default',
+          image: 'images/exp-kite.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80',
+          description:
+            '전통 방패연의 원리를 배우며 직접 연을 조립하고, 탁 트인 금강변 바람을 따라 하늘 높이 날려보는 야외 생태 활동입니다.',
+          target: '가족 나들이 · 야외 활동 추천',
+          iconType: 'kite',
+        },
+      ],
+
+      // 5. 객실 및 부대시설 목록 (노션 객실 사진을 images/room-4.jpg, images/room-10.jpg 등으로 넣으시면 됩니다)
+      facilities: [
+        {
+          id: 'room-4',
+          category: 'room',
+          categoryLabel: '객실 숙박',
+          name: '4인실 (가족 · 소모임)',
+          capacity: '기준 4인 (최대 5인)',
+          price: '70,000원 / 박',
+          extraNote: '기준 인원 초과 시 1인당 10,000원 추가',
+          timeOrRule: '입실 15:00 · 퇴실 11:00',
+          image: 'images/room-4.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1598928506311-c55ded91a20c?auto=format&fit=crop&w=900&q=80',
+          amenities: ['TV', '냉장고', '에어컨', 'Wi-Fi', '전용 욕실', '샴푸·린스·바디클렌저', '수건'],
+          description: '가족 단위 여행객이나 소규모 모임이 아늑하게 머물 수 있는 깔끔한 온돌형 객실입니다.',
+          badge: '가족 추천',
+        },
+        {
+          id: 'room-10',
+          category: 'room',
+          categoryLabel: '객실 숙박',
+          name: '10인실 (단체 · 워크숍)',
+          capacity: '기준 10인 (최대 12인)',
+          price: '140,000원 / 박',
+          extraNote: '기준 인원 초과 시 1인당 10,000원 추가',
+          timeOrRule: '입실 15:00 · 퇴실 11:00',
+          image: 'images/room-10.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=900&q=80',
+          amenities: ['TV', '냉장고', '에어컨', 'Wi-Fi', '전용 욕실', '샴푸·린스·바디클렌저', '수건'],
+          description: '동창회, 가족 모임, 단체 연수 인원이 함께 어울려 넉넉하게 투숙할 수 있는 대형 객실입니다.',
+          badge: '단체 추천',
+        },
+        {
+          id: 'seminar',
+          category: 'facility',
+          categoryLabel: '부대시설',
+          name: '세미나실',
+          capacity: '단체 수용 가능',
+          price: '300,000원 (기본 3시간)',
+          extraNote: '사전 전화 문의 필수',
+          timeOrRule: '빔프로젝터 · 음향 시설 완비',
+          image: 'images/facility-seminar.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1517502884422-41eaead166d4?auto=format&fit=crop&w=900&q=80',
+          amenities: ['빔프로젝터', '음향 마이크 시설', '회의용 테이블·의자', '냉난방 완비'],
+          description: '기관 워크숍, 단체 교육, 마을 행사 등을 쾌적하게 진행할 수 있는 다목적 강당형 공간입니다.',
+          badge: '사전 문의 필수',
+        },
+        {
+          id: 'dining',
+          category: 'facility',
+          categoryLabel: '부대시설',
+          name: '식당 (단체 식사 공간)',
+          capacity: '단체 수용 가능',
+          price: '4,000원 / 인',
+          extraNote: '사전 전화 문의 필수',
+          timeOrRule: '단체 식사 공간 대여',
+          image: 'images/facility-dining.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=80',
+          amenities: ['단체 식탁 완비', '쾌적한 실내 식사 공간'],
+          description: '단체 방문객이 함께 모여 편리하게 식사를 나누실 수 있도록 마련된 마을 공동 식당입니다.',
+          badge: '사전 문의 필수',
+        },
+        {
+          id: 'footvolley',
+          category: 'facility',
+          categoryLabel: '부대시설',
+          name: '족구장',
+          capacity: '단체 체육활동',
+          price: '30,000원 (기본 3시간)',
+          extraNote: '객실 · 세미나실 이용객 한정',
+          timeOrRule: '야외 잔디 구장',
+          image: 'images/facility-footvolley.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1526232761682-d26e03ac148e?auto=format&fit=crop&w=900&q=80',
+          amenities: ['야외 잔디 구장', '네트 설비'],
+          description: '숙박 또는 세미나실을 이용하시는 단체 방문객이 친목 체육활동을 즐길 수 있는 야외 잔디 구장입니다.',
+          badge: '이용객 전용',
+        },
+        {
+          id: 'pool',
+          category: 'facility',
+          categoryLabel: '부대시설',
+          name: '야외 물놀이장',
+          capacity: '어린이 · 유아 전용',
+          price: '8,000원 / 인 (숙박객 7,000원)',
+          extraNote: '여름 시즌 한정 (운영 기간 별도 공지)',
+          timeOrRule: '어린이 · 유아 맞춤 수심 풀',
+          image: 'images/facility-pool.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=900&q=80',
+          amenities: ['어린이·유아 풀장', '여름 한시 개장'],
+          description: '무더운 여름철 아이들과 함께 시원하게 물놀이를 즐길 수 있는 시즌 한정 야외 풀장입니다.',
+          badge: '여름 시즌 한정',
+        },
+      ],
+
+      // 6. 주변 둘러보기 연계 코스 (풍경 사진 포함)
+      nearby: [
+        {
+          title: '용안생태습지공원',
+          tag: '도보 · 차량 인접',
+          image: 'images/spot-wetland.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=800&q=80',
+          description:
+            '금강변을 따라 펼쳐진 대규모 갈대숲과 연꽃, 나무 데크 산책로가 어우러져 사계절 생태 관찰과 여유로운 산책을 즐기기 좋습니다.',
+        },
+        {
+          title: '금강변 바람개비길 · 자전거길',
+          tag: '강변 나들이 코스',
+          image: 'images/spot-river.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=800&q=80',
+          description:
+            '시원한 강바람을 맞으며 알록달록한 바람개비 길을 걷거나 가족과 함께 강변 자전거 라이딩을 즐기기에 안성맞춤입니다.',
+        },
+        {
+          title: '익산공공승마장',
+          tag: '체험 연계 추천',
+          image: 'images/spot-horse.jpg',
+          fallbackImage:
+            'https://images.unsplash.com/photo-1553284965-83fd3e82fa5a?auto=format&fit=crop&w=800&q=80',
+          description:
+            '인근에 위치한 공공승마장과 연계해 말 먹이주기 및 승마 체험을 함께 계획하시면 더욱 풍성한 가족 나들이 코스가 됩니다.',
+        },
+      ],
+    };
+  </script>
+
+  <!-- 상단 계절/임시 공지 배너 (SITE_CONFIG.notice.active가 true일 때만 노출) -->
+  <div id="top-notice-bar" class="hidden bg-terracotta text-white text-sm py-2.5 px-4">
+    <div class="max-w-6xl mx-auto flex items-center justify-between gap-3">
+      <div class="flex items-center gap-2 flex-wrap">
+        <span id="notice-badge" class="inline-block bg-white/20 text-white text-xs font-semibold px-2.5 py-0.5 rounded-full"></span>
+        <p id="notice-text" class="font-medium"></p>
+      </div>
+      <button type="button" onclick="document.getElementById('top-notice-bar').classList.add('hidden')" class="text-white/80 hover:text-white p-1 rounded-lg" aria-label="공지 닫기">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- 상단 고정 내비게이션 -->
+  <header class="sticky top-0 z-40 bg-ivory/95 backdrop-blur-md border-b border-forest/10">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 h-16 sm:h-20 flex items-center justify-between gap-4">
+      <!-- 브랜드 로고 -->
+      <a href="#" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-forest text-white flex items-center justify-center shadow-sm group-hover:bg-forest-dark transition-colors">
+          <!-- 산과 강물을 형상화한 심플 심볼 -->
+          <svg class="w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 17l5.5-7.5 4 5 3.5-4.5L21 17" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3 20c3-1 6 1 9 0s6-1 9 0" />
+          </svg>
+        </div>
+        <div>
+          <span class="block text-[11px] sm:text-xs text-forest/75 font-medium leading-none">농촌체험휴양마을</span>
+          <span id="nav-brand-name" class="font-serif text-lg sm:text-xl font-bold text-forest tracking-tight">용머리고을</span>
+        </div>
+      </a>
+
+      <!-- 데스크톱 메뉴 링크 -->
+      <nav class="hidden md:flex items-center gap-8 text-[15px] font-medium text-charcoal/85">
+        <a href="#about" class="hover:text-forest transition-colors py-2">마을 소개</a>
+        <a href="#programs" class="hover:text-forest transition-colors py-2">체험 프로그램</a>
+        <a href="#facilities" class="hover:text-forest transition-colors py-2">객실 · 부대시설</a>
+        <a href="#nearby" class="hover:text-forest transition-colors py-2">주변 둘러보기</a>
+        <a href="#location" class="hover:text-forest transition-colors py-2">오시는 길</a>
+      </nav>
+
+      <!-- 우측 전화 예약 CTA -->
+      <div class="flex items-center gap-2">
+        <button
+          type="button"
+          onclick="handlePhoneAction(SITE_CONFIG.phoneLandline)"
+          class="inline-flex items-center gap-2 bg-forest hover:bg-forest-dark text-white text-sm font-semibold px-4 py-2.5 rounded-xl shadow-sm transition-all active:scale-[0.99]"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+          </svg>
+          <span class="hidden sm:inline">예약 문의</span>
+          <span id="nav-phone-text">063-861-9908</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 모바일 가로 스크롤 빠른 메뉴 바 -->
+    <div class="md:hidden border-t border-forest/10 bg-ivory/95 px-4 py-2 overflow-x-auto no-scrollbar">
+      <div class="flex items-center gap-5 text-xs font-semibold text-charcoal/80 whitespace-nowrap">
+        <a href="#about" class="hover:text-forest py-1">마을 소개</a>
+        <a href="#programs" class="hover:text-forest py-1">체험 프로그램</a>
+        <a href="#facilities" class="hover:text-forest py-1">객실 · 부대시설</a>
+        <a href="#nearby" class="hover:text-forest py-1">주변 둘러보기</a>
+        <a href="#location" class="hover:text-forest py-1">오시는 길</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- 1. 히어로 섹션 -->
+  <section id="about" class="hero-bg relative overflow-hidden text-white">
+    <!-- 배경 사진 + 짙은 숲색 그라데이션 오버레이 (글자 가독성과 따뜻한 풍경 감성 동시 확보) -->
+    <img
+      id="hero-bg-image"
+      src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80"
+      alt="농촌체험휴양마을 용머리고을 자연 풍경"
+      class="absolute inset-0 w-full h-full object-cover object-center scale-105"
+    />
+    <div class="absolute inset-0 bg-gradient-to-r from-[#172B23]/92 via-[#1F382E]/82 to-[#2D4A3E]/65"></div>
+
+    <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-16 sm:py-24 lg:py-28">
+      <div class="max-w-3xl">
+        <div class="inline-flex items-center gap-2 bg-white/12 backdrop-blur-sm border border-white/20 text-white/95 text-xs sm:text-sm font-medium px-3.5 py-1.5 rounded-full mb-6">
+          <span class="w-2 h-2 rounded-full bg-amber-300"></span>
+          <span id="hero-eyebrow">전북 익산 용안면 · 금강변 생태 휴양 마을</span>
+        </div>
+
+        <h1 class="font-serif text-3xl sm:text-5xl lg:text-[52px] font-bold leading-[1.28] tracking-tight mb-6">
+          <span id="hero-title-main" class="block">자연과 쉼이 어우러진 정겨운</span>
+          <span id="hero-title-highlight" class="block text-amber-200 mt-1">농촌체험휴양마을, 용머리고을</span>
+        </h1>
+
+        <p id="hero-description" class="text-white/85 text-base sm:text-lg leading-relaxed max-w-2xl mb-9">
+          금강변의 청정한 바람과 따스한 시골의 정이 머무는 곳입니다. 가족과 단체가 함께 쉬어가는 고즈넉한 객실부터 오감을 깨우는 전통 체험까지 정성껏 준비했습니다.
+        </p>
+
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
+          <button
+            type="button"
+            onclick="handlePhoneAction(SITE_CONFIG.phoneLandline)"
+            class="inline-flex items-center justify-center gap-2.5 bg-terracotta hover:bg-terracotta-dark text-white font-semibold text-base px-6 py-4 rounded-2xl shadow-lg shadow-black/15 transition-all"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+            </svg>
+            <span>전화 예약 문의 (<span id="hero-phone-text">063-861-9908</span>)</span>
+          </button>
+
+          <a
+            href="#programs"
+            class="inline-flex items-center justify-center gap-2 bg-white/12 hover:bg-white/20 text-white border border-white/25 font-semibold text-base px-6 py-4 rounded-2xl backdrop-blur-sm transition-all"
+          >
+            <span>체험 · 객실 안내 보기</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. 예약 및 상담 핵심 바 (히어로 하단 겹침 카드) -->
+  <section class="max-w-6xl mx-auto px-4 sm:px-6 -mt-8 relative z-10">
+    <div class="bg-white rounded-3xl shadow-md border border-forest/10 p-6 sm:p-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
+        <!-- 좌측: 예약 전화번호 -->
+        <div class="lg:col-span-5 border-b lg:border-b-0 lg:border-r border-forest/10 pb-5 lg:pb-0 lg:pr-6">
+          <span class="inline-block text-xs font-bold text-terracotta bg-terracotta-soft px-3 py-1 rounded-full mb-2.5">
+            사전 전화 문의 예약제
+          </span>
+          <h2 class="font-serif text-xl sm:text-2xl font-bold text-charcoal mb-3">예약 및 상담 안내</h2>
+          <div class="space-y-2">
+            <button
+              type="button"
+              onclick="handlePhoneAction(SITE_CONFIG.phoneLandline)"
+              class="w-full flex items-center justify-between bg-forest-soft hover:bg-forest hover:text-white text-forest font-bold px-4 py-3 rounded-xl transition-colors group text-left"
+            >
+              <span class="text-sm font-medium opacity-85">유선 대표전화</span>
+              <span id="card-phone-landline" class="text-lg tracking-tight">063-861-9908</span>
+            </button>
+            <button
+              type="button"
+              onclick="handlePhoneAction(SITE_CONFIG.phoneMobile)"
+              class="w-full flex items-center justify-between bg-cream hover:bg-terracotta hover:text-white text-charcoal font-bold px-4 py-3 rounded-xl transition-colors group text-left"
+            >
+              <span class="text-sm font-medium opacity-80">사무장 직통 휴대폰</span>
+              <span id="card-phone-mobile" class="text-lg tracking-tight">010-3750-9908</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- 우측: 상담 시간 및 예약 팁 -->
+        <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+          <div class="bg-ivory rounded-2xl p-4 sm:p-5 border border-forest/8">
+            <div class="flex items-center gap-2 text-forest font-bold text-sm mb-2">
+              <svg class="w-4 h-4 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+              </svg>
+              <span>상담 가능 시간</span>
+            </div>
+            <p id="card-hours-weekday" class="text-charcoal font-semibold text-sm sm:text-base">평일 · 토요일 09:00 ~ 18:00</p>
+            <p id="card-hours-sunday" class="text-charcoal/80 text-sm mt-1">일요일 13:00 ~ 18:00</p>
+            <p class="text-xs text-charcoal/60 mt-2.5">※ 통화 부재 시 문자를 남겨주시면 확인 후 연락드립니다.</p>
+          </div>
+
+          <div class="bg-ivory rounded-2xl p-4 sm:p-5 border border-forest/8">
+            <div class="flex items-center gap-2 text-forest font-bold text-sm mb-2">
+              <svg class="w-4 h-4 text-terracotta" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+              </svg>
+              <span>빠른 상담을 위한 준비 안내</span>
+            </div>
+            <p class="text-sm text-charcoal/85 leading-relaxed">
+              전화 주실 때 <strong>① 희망 날짜 ② 인원수 ③ 숙박 또는 체험 희망 여부</strong>를 말씀해 주시면 빠르게 안내해 드립니다.
+            </p>
+            <p class="text-xs text-forest font-medium mt-2">
+              · 지자체 공식 농촌체험 예약 플랫폼과도 연계 운영 중입니다.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. 체험 프로그램 섹션 -->
+  <section id="programs" class="max-w-6xl mx-auto px-4 sm:px-6 pt-20 sm:pt-24">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <div>
+        <span class="text-xs font-bold tracking-wider text-terracotta uppercase">Experience Programs</span>
+        <h2 class="font-serif text-2xl sm:text-4xl font-bold text-charcoal mt-1.5">정겨운 농촌 · 전통 체험</h2>
+        <p class="text-charcoal/75 text-sm sm:text-base mt-2">
+          아이들과 함께 만들고 즐기는 오감 만족 체험 프로그램입니다. 단체 체험 및 계절 운영 여부는 사전 문의해 주세요.
+        </p>
+      </div>
+      <div class="inline-flex items-center gap-2 bg-forest-soft text-forest text-xs sm:text-sm font-medium px-4 py-2.5 rounded-xl self-start md:self-auto">
+        <span>💡 단체 체험 일정 · 인원 맞춤 조율 가능</span>
+      </div>
+    </div>
+
+    <!-- 체험 카드 그리드 (JS에서 자동 렌더링) -->
+    <div id="programs-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+  </section>
+
+  <!-- 4. 객실 및 부대시설 섹션 -->
+  <section id="facilities" class="max-w-6xl mx-auto px-4 sm:px-6 pt-20 sm:pt-24">
+    <div class="flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8">
+      <div>
+        <span class="text-xs font-bold tracking-wider text-terracotta uppercase">Rooms &amp; Facilities</span>
+        <h2 class="font-serif text-2xl sm:text-4xl font-bold text-charcoal mt-1.5">객실 및 부대시설 안내</h2>
+        <p class="text-charcoal/75 text-sm sm:text-base mt-2">
+          가족 나들이부터 단체 워크숍까지 편안하게 머무실 수 있는 온돌 객실과 부대공간입니다.
+        </p>
+      </div>
+
+      <!-- 카테고리 필터 탭 -->
+      <div class="inline-flex bg-cream p-1.5 rounded-2xl border border-forest/10 self-start">
+        <button
+          type="button"
+          data-filter="all"
+          onclick="filterFacilities('all')"
+          class="facility-tab px-4 py-2 rounded-xl text-sm font-semibold transition-all bg-forest text-white shadow-sm"
+        >
+          전체 보기
+        </button>
+        <button
+          type="button"
+          data-filter="room"
+          onclick="filterFacilities('room')"
+          class="facility-tab px-4 py-2 rounded-xl text-sm font-semibold transition-all text-charcoal/75 hover:text-charcoal"
+        >
+          객실 숙박
+        </button>
+        <button
+          type="button"
+          data-filter="facility"
+          onclick="filterFacilities('facility')"
+          class="facility-tab px-4 py-2 rounded-xl text-sm font-semibold transition-all text-charcoal/75 hover:text-charcoal"
+        >
+          부대시설
+        </button>
+      </div>
+    </div>
+
+    <!-- 객실/부대시설 카드 그리드 (JS에서 자동 렌더링) -->
+    <div id="facilities-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10"></div>
+
+    <!-- 한눈에 보는 요금 요약표 (접거나 펼칠 수 있는 깔끔한 표) -->
+    <div class="bg-white rounded-3xl border border-forest/12 overflow-hidden shadow-sm">
+      <div class="px-6 py-4 bg-forest-soft/70 border-b border-forest/10 flex items-center justify-between">
+        <h3 class="font-serif font-bold text-base sm:text-lg text-forest">한눈에 보는 객실 · 부대시설 요금표</h3>
+        <span class="text-xs text-forest/80 font-medium">VAT 포함 · 사전 전화 예약 기준</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse min-w-[640px]">
+          <thead>
+            <tr class="bg-ivory text-xs font-bold text-charcoal/70 border-b border-forest/10">
+              <th class="py-3.5 px-5">구분</th>
+              <th class="py-3.5 px-5">수용 인원</th>
+              <th class="py-3.5 px-5">이용 요금</th>
+              <th class="py-3.5 px-5">이용 시간 및 비고</th>
+            </tr>
+          </thead>
+          <tbody id="facilities-table-body" class="divide-y divide-forest/8 text-sm"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. 주변 둘러보기 섹션 -->
+  <section id="nearby" class="mt-20 sm:mt-24 py-16 sm:py-20 bg-cream/80 paper-pattern border-y border-forest/8">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
+      <div class="max-w-2xl mb-10">
+        <span class="text-xs font-bold tracking-wider text-terracotta uppercase">Nearby Spots</span>
+        <h2 class="font-serif text-2xl sm:text-4xl font-bold text-charcoal mt-1.5">함께 둘러보기 좋은 주변 명소</h2>
+        <p class="text-charcoal/75 text-sm sm:text-base mt-2">
+          용머리고을의 숙박·체험과 함께 금강변의 아름다운 생태·나들이 코스를 엮어 하루를 알차게 즐겨보세요.
+        </p>
+      </div>
+
+      <!-- 주변 명소 카드 (JS에서 자동 렌더링) -->
+      <div id="nearby-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </div>
+  </section>
+
+  <!-- 6. 오시는 길 & 푸터 -->
+  <footer id="location" class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 pb-12">
+    <div class="bg-white rounded-3xl border border-forest/12 p-6 sm:p-10 shadow-sm mb-12">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class="lg:col-span-7">
+          <span class="text-xs font-bold tracking-wider text-terracotta uppercase">Location &amp; Contact</span>
+          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal mt-1.5 mb-4">오시는 길</h2>
+
+          <div class="bg-ivory rounded-2xl p-4 sm:p-5 border border-forest/10 mb-5">
+            <p class="text-xs font-semibold text-forest mb-1">도로명 주소</p>
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div>
+                <p id="footer-address" class="text-base sm:text-lg font-bold text-charcoal">전북특별자치도 익산시 용안면 강변로 1087-12</p>
+                <p id="footer-address-detail" class="text-sm text-charcoal/70 mt-0.5">농촌체험휴양마을 용머리고을</p>
+              </div>
+              <button
+                type="button"
+                onclick="copyText(SITE_CONFIG.address, '주소가 복사되었습니다. 내비게이션에 붙여넣어 주세요.')"
+                class="inline-flex items-center justify-center gap-1.5 bg-white hover:bg-forest hover:text-white text-forest border border-forest/20 text-xs font-semibold px-3.5 py-2.5 rounded-xl transition-colors shrink-0 self-start sm:self-center"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                </svg>
+                <span>주소 복사</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- 지도 앱 바로가기 버튼 (API 키 없이 안정적으로 작동하는 공식 지도 검색 링크) -->
+          <div class="flex flex-wrap items-center gap-3">
+            <a
+              id="naver-map-link"
+              href="https://map.naver.com/p/search/전북특별자치도 익산시 용안면 강변로 1087-12"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-[#03C75A] hover:brightness-95 text-white font-semibold text-sm px-5 py-3 rounded-xl shadow-sm transition-all"
+            >
+              <span class="font-extrabold">N</span>
+              <span>네이버 지도 길찾기</span>
+            </a>
+            <a
+              id="kakao-map-link"
+              href="https://map.kakao.com/link/search/전북특별자치도 익산시 용안면 강변로 1087-12"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center gap-2 bg-[#FEE500] hover:brightness-95 text-[#191919] font-semibold text-sm px-5 py-3 rounded-xl shadow-sm transition-all"
+            >
+              <span class="font-extrabold">K</span>
+              <span>카카오맵 길찾기</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 우측 안내 요약 카드 -->
+        <div class="lg:col-span-5 bg-forest text-white rounded-2xl p-6 sm:p-7">
+          <h3 class="font-serif text-xl font-bold mb-3">방문 전 확인해 주세요</h3>
+          <ul class="space-y-2.5 text-sm text-white/90">
+            <li class="flex items-start gap-2">
+              <span class="text-amber-300 font-bold">·</span>
+              <span>모든 객실 숙박 및 체험 프로그램은 <strong>사전 전화 예약</strong>으로 운영됩니다.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-300 font-bold">·</span>
+              <span>입실은 <strong>오후 3시(15:00)</strong>, 퇴실은 <strong>오전 11시(11:00)</strong>입니다.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-amber-300 font-bold">·</span>
+              <span>오란다 만들기(여름철 외), 야외 물놀이장(여름 한정) 등 계절 프로그램은 전화로 일정을 확인해 주세요.</span>
+            </li>
+          </ul>
+          <div class="mt-5 pt-4 border-t border-white/15 flex items-center justify-between text-xs text-white/75">
+            <span>공식 홈페이지</span>
+            <span id="footer-domain" class="font-semibold text-amber-200">yongmeori.com</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 하단 카피라이트 -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-charcoal/60">
+      <div class="text-center sm:text-left">
+        <p class="font-semibold text-charcoal/80">농촌체험휴양마을 용머리고을</p>
+        <p class="mt-1">전북특별자치도 익산시 용안면 강변로 1087-12 · 대표전화 063-861-9908 / 010-3750-9908</p>
+      </div>
+      <p>© <span id="current-year"></span> 용머리고을 (yongmeori.com). All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- 모바일 전용 하단 고정 플로팅 전화 예약 바 -->
+  <div class="md:hidden fixed bottom-0 inset-x-0 z-50 bg-white/95 backdrop-blur-md border-t border-forest/15 px-3 py-2.5 shadow-[0_-4px_20px_rgba(0,0,0,0.06)]">
+    <div class="grid grid-cols-2 gap-2.5 max-w-md mx-auto">
+      <a
+        id="mobile-float-landline"
+        href="tel:063-861-9908"
+        class="flex items-center justify-center gap-1.5 bg-forest text-white font-semibold text-xs py-3 rounded-xl shadow-sm active:scale-[0.98]"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+        </svg>
+        <span>마을 전화 문의</span>
+      </a>
+      <a
+        id="mobile-float-mobile"
+        href="tel:010-3750-9908"
+        class="flex items-center justify-center gap-1.5 bg-terracotta text-white font-semibold text-xs py-3 rounded-xl shadow-sm active:scale-[0.98]"
+      >
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+        </svg>
+        <span>사무장 휴대폰 상담</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- PC 복사 완료 및 안내용 토스트 메시지 -->
+  <div
+    id="toast-message"
+    class="fixed bottom-20 md:bottom-8 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 bg-charcoal text-white text-sm font-medium px-5 py-3 rounded-2xl shadow-xl flex items-center gap-2 whitespace-nowrap"
+  >
+    <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+    <span id="toast-text">복사되었습니다.</span>
+  </div>
+
+  <!-- =====================================================================
+       우측 하단 플로팅 Q&A 안내 도우미 위젯 (서버·API 비용 0원)
+  ====================================================================== -->
+  <div id="qa-widget-container" class="fixed bottom-20 md:bottom-6 right-4 md:right-6 z-50 flex flex-col items-end">
+    <!-- 채팅창 패널 -->
+    <div
+      id="qa-chat-window"
+      class="hidden w-[calc(100vw-2rem)] sm:w-[370px] max-h-[75vh] bg-white rounded-3xl shadow-2xl border border-forest/15 overflow-hidden flex flex-col mb-3 transition-all"
+    >
+      <!-- 채팅창 헤더 -->
+      <div class="bg-forest text-white px-5 py-4 flex items-center justify-between shrink-0">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-full bg-white/15 flex items-center justify-center text-amber-200">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+            </svg>
+          </div>
+          <div>
+            <h3 class="font-serif font-bold text-sm sm:text-base leading-tight">용머리고을 안내 도우미</h3>
+            <p class="text-[11px] text-white/80 mt-0.5">객실 · 체험 · 부대시설 24시간 빠른 안내</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          onclick="toggleQaChat()"
+          class="text-white/80 hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition-colors"
+          aria-label="안내 도우미 닫기"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+
+      <!-- 대화 내용 스크롤 영역 -->
+      <div id="qa-messages" class="flex-1 overflow-y-auto p-4 space-y-3 bg-ivory/70 text-sm">
+        <!-- 초기 환영 메시지 (JS에서 렌더링) -->
+      </div>
+
+      <!-- 자주 묻는 질문 원클릭 칩 -->
+      <div class="px-3.5 py-2.5 bg-white border-t border-forest/10 shrink-0">
+        <p class="text-[11px] font-semibold text-charcoal/55 mb-1.5 px-0.5">자주 묻는 질문 선택</p>
+        <div id="qa-quick-chips" class="flex gap-1.5 overflow-x-auto no-scrollbar pb-0.5"></div>
+      </div>
+
+      <!-- 직접 질문 입력 폼 -->
+      <form onsubmit="handleQaSubmit(event)" class="p-3 bg-white border-t border-forest/10 flex items-center gap-2 shrink-0">
+        <input
+          id="qa-input"
+          type="text"
+          placeholder="궁금한 내용을 입력해 보세요 (예: 수건, 요금)"
+          class="flex-1 bg-ivory border border-forest/15 focus:border-forest focus:outline-none rounded-xl px-3.5 py-2.5 text-xs sm:text-sm text-charcoal placeholder:text-charcoal/45"
+        />
+        <button
+          type="submit"
+          class="bg-forest hover:bg-forest-dark text-white p-2.5 rounded-xl transition-colors shrink-0"
+          aria-label="질문 보내기"
+        >
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- 채팅창 열기/닫기 플로팅 버튼 -->
+    <button
+      type="button"
+      onclick="toggleQaChat()"
+      class="inline-flex items-center gap-2 bg-forest hover:bg-forest-dark text-white font-semibold text-xs sm:text-sm px-4 py-3 sm:px-5 sm:py-3.5 rounded-full shadow-lg shadow-forest/25 border border-white/15 transition-all active:scale-95"
+    >
+      <svg class="w-4 h-4 sm:w-5 sm:h-5 text-amber-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+      </svg>
+      <span>마을 안내 Q&amp;A</span>
+    </button>
+  </div>
+
+  <!-- =====================================================================
+       화면 자동 렌더링 및 인터랙션 스크립트
+  ====================================================================== -->
+  <script>
+    // 이미지 로드 실패 시(예: 아직 로컬 images/ 폴더에 사진을 넣기 전) fallbackImage로 자동 전환
+    function handleImgFallback(imgEl, fallbackUrl) {
+      if (imgEl.dataset.fallbackApplied) return;
+      imgEl.dataset.fallbackApplied = 'true';
+      imgEl.src = fallbackUrl;
+    }
+
+    // 체험 아이콘 SVG 생성 함수 (사진 상단 배지 보조용)
+    function getProgramIconSVG(type) {
+      switch (type) {
+        case 'cookie':
+          return `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="5" width="16" height="14" rx="3" />
+            <circle cx="9" cy="10" r="1" fill="currentColor" />
+            <circle cx="15" cy="10" r="1" fill="currentColor" />
+            <circle cx="12" cy="13" r="1" fill="currentColor" />
+          </svg>`;
+        case 'lantern':
+          return `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" d="M12 2v3M8 5h8" />
+            <rect x="6" y="5" width="12" height="13" rx="5" />
+            <path stroke-linecap="round" d="M10 18v3M14 18v3" />
+          </svg>`;
+        case 'scarecrow':
+          return `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 8h12l-2-4H8L6 8z" />
+            <circle cx="12" cy="11" r="2.5" />
+            <path stroke-linecap="round" d="M4 15h16M12 13.5V21" />
+          </svg>`;
+        case 'kite':
+        default:
+          return `<svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="12 3 20 11 12 19 4 11 12 3" />
+            <path stroke-linecap="round" d="M12 3v16M4 11h16" />
+          </svg>`;
+      }
+    }
+
+    // 토스트 알림 표시
+    let toastTimer = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toast-message');
+      const textEl = document.getElementById('toast-text');
+      textEl.textContent = msg;
+      toast.classList.remove('opacity-0', 'translate-y-2');
+      toast.classList.add('opacity-100', 'translate-y-0');
+
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('opacity-100', 'translate-y-0');
+        toast.classList.add('opacity-0', 'translate-y-2');
+      }, 2800);
+    }
+
+    // 클립보드 텍스트 복사 (iFrame 및 모바일 환경 호환)
+    function copyText(text, successMsg) {
+      const textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg || '클립보드에 복사되었습니다.');
+      } catch (err) {
+        showToast('복사에 실패했습니다. 직접 선택해 복사해 주세요.');
+      }
+      document.body.removeChild(textarea);
+    }
+
+    // 전화 연결 및 PC 환경 복사 보조 처리
+    function handlePhoneAction(phoneNumber) {
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+      if (isMobile) {
+        window.location.href = `tel:${phoneNumber}`;
+      } else {
+        copyText(phoneNumber, `전화번호(${phoneNumber})가 복사되었습니다.`);
+      }
+    }
+
+    // 객실 및 부대시설 카테고리 탭 필터링
+    function filterFacilities(category) {
+      document.querySelectorAll('.facility-tab').forEach((btn) => {
+        const isActive = btn.dataset.filter === category;
+        if (isActive) {
+          btn.classList.add('bg-forest', 'text-white', 'shadow-sm');
+          btn.classList.remove('text-charcoal/75', 'hover:text-charcoal');
+        } else {
+          btn.classList.remove('bg-forest', 'text-white', 'shadow-sm');
+          btn.classList.add('text-charcoal/75', 'hover:text-charcoal');
+        }
+      });
+      renderFacilities(category);
+    }
+
+    // 체험 프로그램 카드 렌더링 (상단 16:10 사진 프레임 + 정보)
+    function renderPrograms() {
+      const grid = document.getElementById('programs-grid');
+      grid.innerHTML = SITE_CONFIG.programs
+        .map((item) => {
+          const badgeStyle =
+            item.badgeType === 'season'
+              ? 'bg-terracotta text-white'
+              : 'bg-forest text-white';
+
+          return `
+            <article class="bg-white rounded-3xl border border-forest/10 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all group">
+              <div>
+                <!-- 체험 대표 사진 -->
+                <div class="relative aspect-[16/10] bg-cream overflow-hidden">
+                  <img
+                    src="${item.image}"
+                    alt="${item.title}"
+                    onerror="handleImgFallback(this, '${item.fallbackImage}')"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent"></div>
+                  <span class="absolute top-3 right-3 text-xs font-bold px-3 py-1 rounded-full shadow-sm ${badgeStyle}">
+                    ${item.badge}
+                  </span>
+                  <div class="absolute bottom-3 left-3 w-8 h-8 rounded-xl bg-white/90 backdrop-blur-sm text-forest flex items-center justify-center shadow-sm">
+                    ${getProgramIconSVG(item.iconType)}
+                  </div>
+                </div>
+
+                <!-- 체험 설명 본문 -->
+                <div class="p-6 pb-4">
+                  <h3 class="font-serif text-xl font-bold text-charcoal mb-2">${item.title}</h3>
+                  <p class="text-sm text-charcoal/75 leading-relaxed">${item.description}</p>
+                </div>
+              </div>
+
+              <div class="px-6 pb-6 pt-3">
+                <div class="pt-4 border-t border-forest/10 space-y-2.5">
+                  <div class="flex items-baseline justify-between">
+                    <span class="text-xs font-medium text-charcoal/60">참가비 (${item.unit})</span>
+                    <span class="text-lg font-extrabold text-forest">${item.price}</span>
+                  </div>
+                  <div class="flex items-center justify-between text-xs text-charcoal/70">
+                    <span>소요 시간</span>
+                    <span class="font-semibold text-charcoal">${item.duration}</span>
+                  </div>
+                  <div class="text-[11px] text-terracotta font-medium bg-ivory px-3 py-1.5 rounded-lg text-center">
+                    ${item.target}
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+    }
+
+    // 객실 및 부대시설 카드 렌더링 (상단 16:9 와이드 사진 + 시설 상세)
+    function renderFacilities(filter = 'all') {
+      const grid = document.getElementById('facilities-grid');
+      const filtered =
+        filter === 'all'
+          ? SITE_CONFIG.facilities
+          : SITE_CONFIG.facilities.filter((f) => f.category === filter);
+
+      grid.innerHTML = filtered
+        .map((item) => {
+          const isRoom = item.category === 'room';
+          const tagClass = isRoom
+            ? 'bg-forest text-white'
+            : 'bg-terracotta text-white';
+
+          const amenitiesHtml = item.amenities
+            .map(
+              (am) =>
+                `<span class="inline-block bg-ivory text-charcoal/80 text-xs px-2.5 py-1 rounded-lg border border-forest/10">${am}</span>`
+            )
+            .join('');
+
+          return `
+            <article class="bg-white rounded-3xl border border-forest/10 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-md transition-all group">
+              <div>
+                <!-- 객실/부대시설 사진 슬롯 -->
+                <div class="relative aspect-[16/9] bg-cream overflow-hidden">
+                  <img
+                    src="${item.image}"
+                    alt="${item.name}"
+                    onerror="handleImgFallback(this, '${item.fallbackImage}')"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent"></div>
+                  <div class="absolute top-3.5 left-3.5 flex items-center gap-2">
+                    <span class="text-xs font-bold px-3 py-1 rounded-lg shadow-sm ${tagClass}">${item.categoryLabel}</span>
+                    <span class="text-xs font-semibold text-charcoal bg-white/95 backdrop-blur-sm px-3 py-1 rounded-lg shadow-sm">${item.badge}</span>
+                  </div>
+                  <span class="absolute bottom-3.5 right-3.5 text-xs font-semibold text-white bg-black/55 backdrop-blur-sm px-3 py-1 rounded-lg">
+                    ${item.capacity}
+                  </span>
+                </div>
+
+                <!-- 객실/부대시설 상세 내용 -->
+                <div class="p-6 sm:p-7 pb-4">
+                  <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 mb-3">
+                    <h3 class="font-serif text-xl sm:text-2xl font-bold text-charcoal">${item.name}</h3>
+                    <p class="text-lg sm:text-xl font-extrabold text-forest">${item.price}</p>
+                  </div>
+
+                  <p class="text-sm text-charcoal/75 leading-relaxed mb-4">${item.description}</p>
+
+                  <div class="flex flex-wrap gap-1.5">
+                    ${amenitiesHtml}
+                  </div>
+                </div>
+              </div>
+
+              <div class="px-6 sm:px-7 pb-6 pt-2">
+                <div class="pt-4 border-t border-forest/10 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+                  <span class="font-semibold text-forest">${item.timeOrRule}</span>
+                  <span class="text-charcoal/65">${item.extraNote}</span>
+                </div>
+              </div>
+            </article>
+          `;
+        })
+        .join('');
+    }
+
+    // 요약 비교표 렌더링
+    function renderFacilitiesTable() {
+      const tbody = document.getElementById('facilities-table-body');
+      tbody.innerHTML = SITE_CONFIG.facilities
+        .map(
+          (item) => `
+          <tr class="hover:bg-ivory/70 transition-colors">
+            <td class="py-3.5 px-5 font-bold text-charcoal">${item.name}</td>
+            <td class="py-3.5 px-5 text-charcoal/80">${item.capacity}</td>
+            <td class="py-3.5 px-5 font-bold text-forest">${item.price}</td>
+            <td class="py-3.5 px-5 text-charcoal/75 text-xs sm:text-sm">${item.timeOrRule} · ${item.extraNote}</td>
+          </tr>
+        `
+        )
+        .join('');
+    }
+
+    // 주변 둘러보기 렌더링 (풍경 사진 + 안내 카드)
+    function renderNearby() {
+      const grid = document.getElementById('nearby-grid');
+      grid.innerHTML = SITE_CONFIG.nearby
+        .map(
+          (spot, idx) => `
+          <div class="bg-white rounded-3xl border border-forest/10 overflow-hidden shadow-sm hover:shadow-md transition-all group">
+            <div class="relative aspect-[16/10] bg-cream overflow-hidden">
+              <img
+                src="${spot.image}"
+                alt="${spot.title}"
+                onerror="handleImgFallback(this, '${spot.fallbackImage}')"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+              />
+              <div class="absolute top-3.5 left-3.5">
+                <span class="w-8 h-8 rounded-full bg-white/95 text-forest font-serif font-bold text-sm flex items-center justify-center shadow-sm">
+                  0${idx + 1}
+                </span>
+              </div>
+              <span class="absolute bottom-3.5 right-3.5 text-xs font-semibold text-terracotta bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full shadow-sm">
+                ${spot.tag}
+              </span>
+            </div>
+            <div class="p-6 sm:p-7">
+              <h3 class="font-serif text-xl font-bold text-charcoal mb-2.5">${spot.title}</h3>
+              <p class="text-sm text-charcoal/75 leading-relaxed">${spot.description}</p>
+            </div>
+          </div>
+        `
+        )
+        .join('');
+    }
+
+    // 페이지 초기화 (SITE_CONFIG 값을 화면 텍스트 및 이미지에 바인딩)
+    function initPage() {
+      // 히어로 배경 사진 바인딩
+      const heroImg = document.getElementById('hero-bg-image');
+      if (heroImg && SITE_CONFIG.hero.image) {
+        heroImg.onerror = function () {
+          handleImgFallback(heroImg, SITE_CONFIG.hero.fallbackImage);
+        };
+        heroImg.src = SITE_CONFIG.hero.image;
+      }
+
+      // 공지 배너 설정
+      if (SITE_CONFIG.notice.active) {
+        document.getElementById('top-notice-bar').classList.remove('hidden');
+        document.getElementById('notice-badge').textContent = SITE_CONFIG.notice.badge;
+        document.getElementById('notice-text').textContent = SITE_CONFIG.notice.text;
+      }
+
+      // 기본 텍스트 바인딩
+      document.getElementById('nav-brand-name').textContent = SITE_CONFIG.shortName;
+      document.getElementById('nav-phone-text').textContent = SITE_CONFIG.phoneLandline;
+      document.getElementById('hero-eyebrow').textContent = SITE_CONFIG.hero.eyebrow;
+      document.getElementById('hero-title-main').textContent = SITE_CONFIG.hero.titleMain;
+      document.getElementById('hero-title-highlight').textContent = SITE_CONFIG.hero.titleHighlight;
+      document.getElementById('hero-description').textContent = SITE_CONFIG.hero.description;
+      document.getElementById('hero-phone-text').textContent = SITE_CONFIG.phoneLandline;
+
+      document.getElementById('card-phone-landline').textContent = SITE_CONFIG.phoneLandline;
+      document.getElementById('card-phone-mobile').textContent = SITE_CONFIG.phoneMobile;
+      document.getElementById('card-hours-weekday').textContent = SITE_CONFIG.hoursWeekday;
+      document.getElementById('card-hours-sunday').textContent = SITE_CONFIG.hoursSunday;
+
+      document.getElementById('footer-address').textContent = SITE_CONFIG.address;
+      document.getElementById('footer-address-detail').textContent = SITE_CONFIG.addressDetail;
+      document.getElementById('footer-domain').textContent = SITE_CONFIG.domain;
+      document.getElementById('current-year').textContent = new Date().getFullYear();
+
+      // 모바일 플로팅 버튼 및 지도 링크 연결
+      document.getElementById('mobile-float-landline').href = `tel:${SITE_CONFIG.phoneLandline}`;
+      document.getElementById('mobile-float-mobile').href = `tel:${SITE_CONFIG.phoneMobile}`;
+
+      const encodedAddr = encodeURIComponent(SITE_CONFIG.address);
+      document.getElementById('naver-map-link').href = `https://map.naver.com/p/search/${encodedAddr}`;
+      document.getElementById('kakao-map-link').href = `https://map.kakao.com/link/search/${encodedAddr}`;
+
+      // 섹션별 카드 및 표 렌더링
+      renderPrograms();
+      renderFacilities('all');
+      renderFacilitiesTable();
+      renderNearby();
+      initQaAssistant();
+    }
+
+    // =====================================================================
+    // 용머리고을 스마트 Q&A 도우미 로직 (SITE_CONFIG 데이터와 자동 연동)
+    // =====================================================================
+    const QA_QUICK_QUESTIONS = [
+      { label: '객실 요금 · 인원', query: '객실 요금과 인원이 궁금해요' },
+      { label: '입·퇴실 / 비품', query: '입실 퇴실 시간과 비품 안내해 주세요' },
+      { label: '체험 프로그램', query: '체험 프로그램 종류와 가격 알려주세요' },
+      { label: '세미나실 · 식당', query: '세미나실과 식당 대여 기준이 궁금해요' },
+      { label: '물놀이장 · 족구장', query: '물놀이장과 족구장 이용 안내해 주세요' },
+      { label: '오시는 길 · 주변', query: '주소와 주변 가볼만한 곳 알려주세요' },
+    ];
+
+    function toggleQaChat() {
+      const win = document.getElementById('qa-chat-window');
+      win.classList.toggle('hidden');
+      if (!win.classList.contains('hidden')) {
+        const msgBox = document.getElementById('qa-messages');
+        msgBox.scrollTop = msgBox.scrollHeight;
+      }
+    }
+
+    function appendQaMessage(sender, htmlText, showCallCta = false) {
+      const msgBox = document.getElementById('qa-messages');
+      const wrapper = document.createElement('div');
+
+      if (sender === 'user') {
+        wrapper.className = 'flex justify-end';
+        wrapper.innerHTML = `
+          <div class="bg-forest text-white rounded-2xl rounded-tr-sm px-3.5 py-2.5 max-w-[82%] text-xs sm:text-sm leading-relaxed shadow-sm">
+            ${htmlText}
+          </div>
+        `;
+      } else {
+        wrapper.className = 'flex justify-start';
+        const ctaHtml = showCallCta
+          ? `<div class="mt-2.5 pt-2 border-t border-forest/10 flex flex-wrap gap-1.5">
+              <button type="button" onclick="handlePhoneAction('${SITE_CONFIG.phoneLandline}')" class="bg-forest text-white text-[11px] font-semibold px-2.5 py-1.5 rounded-lg hover:bg-forest-dark transition-colors">
+                📞 ${SITE_CONFIG.phoneLandline}
+              </button>
+              <button type="button" onclick="handlePhoneAction('${SITE_CONFIG.phoneMobile}')" class="bg-terracotta text-white text-[11px] font-semibold px-2.5 py-1.5 rounded-lg hover:bg-terracotta-dark transition-colors">
+                📱 ${SITE_CONFIG.phoneMobile}
+              </button>
+            </div>`
+          : '';
+
+        wrapper.innerHTML = `
+          <div class="bg-white text-charcoal border border-forest/12 rounded-2xl rounded-tl-sm px-3.5 py-2.5 max-w-[88%] text-xs sm:text-sm leading-relaxed shadow-sm">
+            <div>${htmlText}</div>
+            ${ctaHtml}
+          </div>
+        `;
+      }
+
+      msgBox.appendChild(wrapper);
+      msgBox.scrollTop = msgBox.scrollHeight;
+    }
+
+    // SITE_CONFIG 기반 키워드 매칭 응답 생성
+    function generateQaReply(rawQuestion) {
+      const q = rawQuestion.toLowerCase().replace(/\s+/g, '');
+      const rooms = SITE_CONFIG.facilities.filter((f) => f.category === 'room');
+      const seminar = SITE_CONFIG.facilities.find((f) => f.id === 'seminar');
+      const dining = SITE_CONFIG.facilities.find((f) => f.id === 'dining');
+      const footvolley = SITE_CONFIG.facilities.find((f) => f.id === 'footvolley');
+      const pool = SITE_CONFIG.facilities.find((f) => f.id === 'pool');
+
+      // 1. 입퇴실 / 비품 / 수건 / 샴푸 등
+      if (/입실|퇴실|체크인|체크아웃|비품|수건|샴푸|린스|욕실|와이파이|wifi|냉장고|에어컨|tv/.test(q)) {
+        const sampleRoom = rooms[0];
+        return {
+          text: `<strong>[객실 입·퇴실 및 구비 비품 안내]</strong><br>
+            · <strong>입실/퇴실:</strong> ${sampleRoom.timeOrRule}<br>
+            · <strong>구비 비품:</strong> ${sampleRoom.amenities.join(', ')}<br>
+            전 객실 온돌 형태이며 기본 세면도구와 수건이 준비되어 있습니다.`,
+          cta: true,
+        };
+      }
+
+      // 2. 객실 / 숙박 / 4인실 / 10인실 / 인원 / 추가요금
+      if (/객실|숙박|방|4인|10인|온돌|추가인원|몇명/.test(q)) {
+        const roomLines = rooms
+          .map((r) => `· <strong>${r.name}:</strong> ${r.capacity} / <strong>${r.price}</strong>`)
+          .join('<br>');
+        return {
+          text: `<strong>[객실 숙박 요금 안내]</strong><br>${roomLines}<br>
+            ※ 기준 인원 초과 시 1인당 10,000원이 추가되며, 사전 전화 문의로 예약이 진행됩니다.`,
+          cta: true,
+        };
+      }
+
+      // 3. 체험 프로그램 / 오란다 / 소원등 / 허수아비 / 연날리기
+      if (/체험|오란다|쌀강정|소원등|허수아비|연날리기|연|만들기|공예/.test(q)) {
+        const progLines = SITE_CONFIG.programs
+          .map((p) => `· <strong>${p.title}:</strong> ${p.price} (${p.duration}${p.badgeType === 'season' ? ', ' + p.badge : ''})`)
+          .join('<br>');
+        return {
+          text: `<strong>[체험 프로그램 안내]</strong><br>${progLines}<br>
+            ※ 단체 체험 일정 및 계절별 운영 여부는 전화로 사전 문의해 주세요.`,
+          cta: true,
+        };
+      }
+
+      // 4. 세미나실 / 식당 / 식사 / 워크숍 / 회의
+      if (/세미나|회의|워크숍|빔|식당|식사|밥|대여/.test(q)) {
+        return {
+          text: `<strong>[세미나실 및 식당 안내]</strong><br>
+            · <strong>${seminar.name}:</strong> ${seminar.price} (${seminar.timeOrRule})<br>
+            · <strong>${dining.name}:</strong> ${dining.price} (${dining.timeOrRule})<br>
+            ※ 두 시설 모두 원활한 준비를 위해 <strong>사전 전화 문의</strong>가 필수입니다.`,
+          cta: true,
+        };
+      }
+
+      // 5. 물놀이장 / 수영장 / 족구장 / 여름
+      if (/물놀이|수영|풀장|여름|족구|체육|운동/.test(q)) {
+        return {
+          text: `<strong>[야외 부대시설 안내]</strong><br>
+            · <strong>${pool.name}:</strong> ${pool.price} (${pool.extraNote})<br>
+            · <strong>${footvolley.name}:</strong> ${footvolley.price} (${footvolley.extraNote})`,
+          cta: true,
+        };
+      }
+
+      // 6. 주소 / 위치 / 오시는 길 / 주변 / 관광
+      if (/주소|위치|어디|오시는길|지도|주변|관광|습지|승마|자전거/.test(q)) {
+        const spots = SITE_CONFIG.nearby.map((s) => s.title).join(', ');
+        return {
+          text: `<strong>[오시는 길 및 주변 명소]</strong><br>
+            · <strong>주소:</strong> ${SITE_CONFIG.address}<br>
+            · <strong>주변 연계 코스:</strong> ${spots} 등과 함께 둘러보시기 좋습니다.`,
+          cta: false,
+        };
+      }
+
+      // 7. 예약 방법 / 전화 / 상담시간 / 결제
+      if (/예약|전화|문의|상담|시간|연락처|결제/.test(q)) {
+        return {
+          text: `<strong>[예약 및 상담 시간 안내]</strong><br>
+            · <strong>상담 시간:</strong> ${SITE_CONFIG.hoursWeekday} / ${SITE_CONFIG.hoursSunday}<br>
+            · 전화 문의 시 <strong>① 희망 날짜 ② 인원수 ③ 숙박·체험 여부</strong>를 말씀해 주시면 빠르게 안내해 드립니다.`,
+          cta: true,
+        };
+      }
+
+      // 기본 fallback 안내
+      return {
+        text: `문의하신 내용은 전화로 상담해 주시면 사무장이 가장 정확하고 빠르게 안내해 드릴 수 있습니다.<br>
+          (${SITE_CONFIG.hoursWeekday} / ${SITE_CONFIG.hoursSunday})`,
+        cta: true,
+      };
+    }
+
+    function askQaQuestion(questionText) {
+      appendQaMessage('user', questionText);
+      const reply = generateQaReply(questionText);
+      setTimeout(() => {
+        appendQaMessage('bot', reply.text, reply.cta);
+      }, 220);
+    }
+
+    function handleQaSubmit(event) {
+      event.preventDefault();
+      const input = document.getElementById('qa-input');
+      const text = input.value.trim();
+      if (!text) return;
+      input.value = '';
+      askQaQuestion(text);
+    }
+
+    function initQaAssistant() {
+      const chipsContainer = document.getElementById('qa-quick-chips');
+      chipsContainer.innerHTML = QA_QUICK_QUESTIONS.map(
+        (item) => `
+          <button
+            type="button"
+            onclick="askQaQuestion('${item.query}')"
+            class="shrink-0 bg-forest-soft hover:bg-forest hover:text-white text-forest text-xs font-semibold px-3 py-1.5 rounded-full transition-colors"
+          >
+            ${item.label}
+          </button>
+        `
+      ).join('');
+
+      appendQaMessage(
+        'bot',
+        `안녕하세요! <strong>${SITE_CONFIG.villageName}</strong> 안내 도우미입니다.<br>아래 버튼을 누르거나 궁금한 내용을 입력하시면 바로 안내해 드릴게요.`
+      );
+    }
+
+    window.addEventListener('DOMContentLoaded', initPage);
+  </script>
+</body>
+</html>
