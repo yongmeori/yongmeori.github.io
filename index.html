@@ -128,6 +128,15 @@
           'https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=1800&q=80',
       },
 
+      // 4-1. 오시는 길 섹션 내 용머리체험관 실제 전경 사진
+      hallPreview: {
+        title: '용머리체험관 전경',
+        caption: '전북 익산시 용안면 강변로 1087-12 · 용머리체험관 정면 및 광장',
+        image: 'images/hall-exterior.jpg',
+        fallbackImage:
+          'https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&w=1200&q=80',
+      },
+
       // 5. 체험 프로그램 목록 (4종 모두 '전화 문의' 배지 통일)
       programs: [
         {
@@ -652,48 +661,83 @@
           >참참에서 보기 ↗</a>
         </div>
       </div>
+
       <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse min-w-[640px]">
+        <table class="w-full text-left border-collapse text-sm">
           <thead>
-            <tr class="bg-ivory text-xs font-bold text-charcoal/70 border-b border-forest/10">
-              <th class="py-3.5 px-5">구분</th>
-              <th class="py-3.5 px-5">수용 인원</th>
-              <th class="py-3.5 px-5">이용 요금</th>
-              <th class="py-3.5 px-5">이용 시간 및 비고</th>
+            <tr class="bg-ivory border-b border-forest/10 text-charcoal/75 text-xs uppercase">
+              <th class="py-3.5 px-5 font-semibold whitespace-nowrap">구분</th>
+              <th class="py-3.5 px-5 font-semibold whitespace-nowrap">수용 인원</th>
+              <th class="py-3.5 px-5 font-semibold whitespace-nowrap">이용 요금</th>
+              <th class="py-3.5 px-5 font-semibold whitespace-nowrap">이용 기준 및 안내</th>
             </tr>
           </thead>
-          <tbody id="facilities-table-body" class="divide-y divide-forest/8 text-sm"></tbody>
+          <tbody id="facilities-table-body" class="divide-y divide-forest/10"></tbody>
         </table>
       </div>
     </div>
   </section>
 
   <!-- 5. 주변 둘러보기 섹션 -->
-  <section id="nearby" class="mt-20 sm:mt-24 py-16 sm:py-20 bg-cream/80 paper-pattern border-y border-forest/8">
+  <section id="nearby" class="mt-20 sm:mt-24 bg-cream/70 paper-pattern border-y border-forest/10 py-16 sm:py-20">
     <div class="max-w-6xl mx-auto px-4 sm:px-6">
       <div class="max-w-2xl mb-10">
-        <span class="text-xs font-bold tracking-wider text-terracotta uppercase">Nearby Spots</span>
-        <h2 class="font-serif text-2xl sm:text-4xl font-bold text-charcoal mt-1.5">함께 둘러보기 좋은 주변 명소</h2>
+        <span class="text-xs font-bold tracking-wider text-terracotta uppercase">Nearby Attractions</span>
+        <h2 class="font-serif text-2xl sm:text-4xl font-bold text-charcoal mt-1.5">용머리고을과 함께 둘러보기</h2>
         <p class="text-charcoal/75 text-sm sm:text-base mt-2">
-          용머리고을의 숙박·체험과 함께 금강변의 아름다운 생태·나들이 코스를 엮어 하루를 알차게 즐겨보세요.
+          숙박과 체험 전후로 가볍게 산책하고 나들이하기 좋은 익산 용안면 인근 명소입니다.
         </p>
       </div>
 
-      <!-- 주변 명소 카드 -->
       <div id="nearby-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
     </div>
   </section>
 
-  <!-- 6. 오시는 길 & 푸터 -->
+  <!-- 6. 오시는 길 & 용머리체험관 전경 & 푸터 -->
   <footer id="location" class="max-w-6xl mx-auto px-4 sm:px-6 pt-16 sm:pt-20 pb-12">
     <div class="bg-white rounded-3xl border border-forest/12 p-6 sm:p-10 shadow-sm mb-12">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-        <div class="lg:col-span-7">
-          <span class="text-xs font-bold tracking-wider text-terracotta uppercase">Location &amp; Contact</span>
-          <h2 class="font-serif text-2xl sm:text-3xl font-bold text-charcoal mt-1.5 mb-4">오시는 길</h2>
+      <div class="mb-7">
+        <span class="text-xs font-bold tracking-wider text-terracotta uppercase">Location &amp; Hall Preview</span>
+        <h2 class="font-serif text-2xl sm:text-4xl font-bold text-charcoal mt-1.5">오시는 길 및 체험관 안내</h2>
+        <p class="text-charcoal/75 text-sm sm:text-base mt-2">
+          내비게이션 안내에 따라 도착하시면 용 조형물과 빨간 간판이 반겨주는 용머리체험관 본관을 바로 찾으실 수 있습니다.
+        </p>
+      </div>
 
-          <div class="bg-ivory rounded-2xl p-4 sm:p-5 border border-forest/10 mb-5">
-            <p class="text-xs font-semibold text-forest mb-1">도로명 주소</p>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 lg:gap-8 items-stretch">
+        <!-- 좌측: 용머리체험관 실제 전경 사진 카드 -->
+        <div class="lg:col-span-6 flex flex-col">
+          <div class="h-full bg-ivory rounded-2xl border border-forest/12 overflow-hidden flex flex-col justify-between shadow-sm group">
+            <div class="relative aspect-[16/10] bg-cream overflow-hidden">
+              <img
+                id="hall-exterior-img"
+                src="images/hall-exterior.jpg"
+                alt="농촌체험휴양마을 용머리고을 용머리체험관 전경"
+                class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
+                loading="lazy"
+              />
+              <span class="absolute top-3.5 left-3.5 bg-forest/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                현장 전경 안내
+              </span>
+            </div>
+            <div class="p-5 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-ivory">
+              <div>
+                <h3 id="hall-preview-title" class="font-serif text-lg font-bold text-charcoal">용머리체험관 전경</h3>
+                <p id="hall-preview-caption" class="text-xs sm:text-sm text-charcoal/70 mt-0.5">
+                  전북 익산시 용안면 강변로 1087-12 · 용머리체험관 정면 및 광장
+                </p>
+              </div>
+              <span class="inline-flex items-center gap-1 text-xs font-semibold text-forest bg-forest-soft px-3 py-1.5 rounded-xl shrink-0 self-start sm:self-center">
+                주차 공간 완비
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 우측: 도로명 주소 · 지도 길찾기 버튼 · 방문 전 확인사항 -->
+        <div class="lg:col-span-6 flex flex-col justify-between gap-5">
+          <div class="bg-ivory rounded-2xl p-5 sm:p-6 border border-forest/10">
+            <p class="text-xs font-bold text-forest mb-1.5">도로명 주소</p>
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div>
                 <p id="footer-address" class="text-base sm:text-lg font-bold text-charcoal">전북특별자치도 익산시 용안면 강변로 1087-12</p>
@@ -710,63 +754,65 @@
                 <span>주소 복사</span>
               </button>
             </div>
+
+            <!-- 지도 앱 및 참참 바로가기 버튼 -->
+            <div class="flex flex-wrap items-center gap-2.5 mt-5 pt-4 border-t border-forest/10">
+              <a
+                id="naver-map-link"
+                href="https://map.naver.com/p/search/전북특별자치도 익산시 용안면 강변로 1087-12"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-[#03C75A] hover:brightness-95 text-white font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-sm transition-all"
+              >
+                <span class="font-extrabold">N</span>
+                <span>네이버 지도 길찾기</span>
+              </a>
+              <a
+                id="kakao-map-link"
+                href="https://map.kakao.com/link/search/전북특별자치도 익산시 용안면 강변로 1087-12"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-2 bg-[#FEE500] hover:brightness-95 text-[#191919] font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-sm transition-all"
+              >
+                <span class="font-extrabold">K</span>
+                <span>카카오맵 길찾기</span>
+              </a>
+              <a
+                id="footer-chamcham-link"
+                href="https://www.chamchamtrip.com/site/company/view.do?menuCd=MENU_000000000000005&companyId=COM_0000000000000122"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="inline-flex items-center gap-1.5 bg-forest-soft hover:bg-forest hover:text-white text-forest font-semibold text-xs sm:text-sm px-4 py-2.5 rounded-xl transition-all"
+              >
+                <span>전북농촌여행 참참</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
           </div>
 
-          <!-- 지도 앱 및 참참 바로가기 버튼 -->
-          <div class="flex flex-wrap items-center gap-3">
-            <a
-              id="naver-map-link"
-              href="https://map.naver.com/p/search/전북특별자치도 익산시 용안면 강변로 1087-12"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 bg-[#03C75A] hover:brightness-95 text-white font-semibold text-sm px-5 py-3 rounded-xl shadow-sm transition-all"
-            >
-              <span class="font-extrabold">N</span>
-              <span>네이버 지도 길찾기</span>
-            </a>
-            <a
-              id="kakao-map-link"
-              href="https://map.kakao.com/link/search/전북특별자치도 익산시 용안면 강변로 1087-12"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-2 bg-[#FEE500] hover:brightness-95 text-[#191919] font-semibold text-sm px-5 py-3 rounded-xl shadow-sm transition-all"
-            >
-              <span class="font-extrabold">K</span>
-              <span>카카오맵 길찾기</span>
-            </a>
-            <a
-              id="footer-chamcham-link"
-              href="https://www.chamchamtrip.com/site/company/view.do?menuCd=MENU_000000000000005&companyId=COM_0000000000000122"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center gap-1.5 bg-forest-soft hover:bg-forest hover:text-white text-forest font-semibold text-sm px-5 py-3 rounded-xl transition-all"
-            >
-              <span>전북농촌여행 참참</span>
-              <span aria-hidden="true">↗</span>
-            </a>
-          </div>
-        </div>
-
-        <!-- 우측 안내 요약 카드 -->
-        <div class="lg:col-span-5 bg-forest text-white rounded-2xl p-6 sm:p-7">
-          <h3 class="font-serif text-xl font-bold mb-3">방문 전 확인해 주세요</h3>
-          <ul class="space-y-2.5 text-sm text-white/90">
-            <li class="flex items-start gap-2">
-              <span class="text-amber-300 font-bold">·</span>
-              <span>모든 객실 숙박 및 체험 프로그램은 <strong>사전 전화 예약</strong> 또는 <strong>전북농촌여행 참참</strong>을 통해 안내받으실 수 있습니다.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-amber-300 font-bold">·</span>
-              <span>입실은 <strong>오후 3시(15:00)</strong>, 퇴실은 <strong>오전 11시(11:00)</strong>입니다.</span>
-            </li>
-            <li class="flex items-start gap-2">
-              <span class="text-amber-300 font-bold">·</span>
-              <span>체험 프로그램(오란다 만들기 등) 및 야외 물놀이장 운영 일정은 전화로 사전에 확인해 주세요.</span>
-            </li>
-          </ul>
-          <div class="mt-5 pt-4 border-t border-white/15 flex items-center justify-between text-xs text-white/75">
-            <span>공식 홈페이지</span>
-            <span id="footer-domain" class="font-semibold text-amber-200">yongmeori.com</span>
+          <!-- 방문 전 안내 요약 박스 -->
+          <div class="flex-1 bg-forest text-white rounded-2xl p-5 sm:p-6 flex flex-col justify-between">
+            <div>
+              <h3 class="font-serif text-lg sm:text-xl font-bold mb-3">방문 전 확인해 주세요</h3>
+              <ul class="space-y-2 text-xs sm:text-sm text-white/90">
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-300 font-bold">·</span>
+                  <span>모든 객실 숙박 및 체험 프로그램은 <strong>전북농촌여행 참참</strong> 또는 <strong>사전 전화 예약</strong>으로 안내받으실 수 있습니다.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-300 font-bold">·</span>
+                  <span>입실은 <strong>오후 3시(15:00)</strong>, 퇴실은 <strong>오전 11시(11:00)</strong>입니다.</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="text-amber-300 font-bold">·</span>
+                  <span>체험 프로그램 및 야외 물놀이장 운영 일정은 전화로 사전에 확인해 주세요.</span>
+                </li>
+              </ul>
+            </div>
+            <div class="mt-4 pt-3.5 border-t border-white/15 flex items-center justify-between text-xs text-white/75">
+              <span>공식 홈페이지</span>
+              <span id="footer-domain" class="font-semibold text-amber-200">yongmeori.com</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1182,6 +1228,17 @@
           handleImgFallback(heroImg, SITE_CONFIG.hero.fallbackImage);
         };
         heroImg.src = SITE_CONFIG.hero.image;
+      }
+
+      // 오시는 길 내 용머리체험관 실제 전경 사진 바인딩
+      const hallImg = document.getElementById('hall-exterior-img');
+      if (hallImg && SITE_CONFIG.hallPreview) {
+        hallImg.onerror = function () {
+          handleImgFallback(hallImg, SITE_CONFIG.hallPreview.fallbackImage);
+        };
+        hallImg.src = SITE_CONFIG.hallPreview.image;
+        document.getElementById('hall-preview-title').textContent = SITE_CONFIG.hallPreview.title;
+        document.getElementById('hall-preview-caption').textContent = SITE_CONFIG.hallPreview.caption;
       }
 
       // 공지 배너 설정
