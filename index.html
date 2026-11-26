@@ -1208,7 +1208,8 @@
       }
 
       // 기본 텍스트 바인딩
-      document.getElementById('nav-brand-name').textContent = SITE_CONFIG.shortName;
+      const navBrandEl = document.getElementById('nav-brand-name');
+      if (navBrandEl) navBrandEl.textContent = SITE_CONFIG.shortName;
       document.getElementById('nav-phone-text').textContent = SITE_CONFIG.phoneLandline;
       document.getElementById('hero-eyebrow').textContent = SITE_CONFIG.hero.eyebrow;
       document.getElementById('hero-title-main').textContent = SITE_CONFIG.hero.titleMain;
