@@ -13,11 +13,11 @@
   <!-- Tailwind CSS (별도 빌드 없이 단일 HTML에서 바로 동작) -->
   <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Google Fonts: 제목용 Noto Serif KR & 본문용 Pretendard -->
+  <!-- Google Fonts: 제목용 Noto Serif KR(사용 굵기 700만 로드) & 본문용 Pretendard 경량 서브셋 -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard-dynamic-subset.min.css" />
 
   <script>
     tailwind.config = {
@@ -428,6 +428,9 @@
     <img
       id="hero-bg-image"
       src="images/hero-village.jpg"
+      onerror="handleImgFallback(this, SITE_CONFIG.hero.fallbackImage)"
+      fetchpriority="high"
+      decoding="async"
       alt="농촌체험휴양마을 용머리고을 자연 풍경"
       class="absolute inset-0 w-full h-full object-cover object-center scale-105"
     />
@@ -717,9 +720,11 @@
               <img
                 id="hall-exterior-img"
                 src="images/hall-exterior.jpg"
+                onerror="handleImgFallback(this, SITE_CONFIG.hallPreview.fallbackImage)"
                 alt="농촌체험휴양마을 용머리고을 용머리체험관 전경"
                 class="w-full h-full object-cover object-center group-hover:scale-[1.02] transition-transform duration-500"
                 loading="lazy"
+                decoding="async"
               />
               <span class="absolute top-3.5 left-3.5 bg-forest/90 backdrop-blur-sm text-white text-xs font-bold px-3 py-1 rounded-full shadow-sm">
                 현장 전경 안내
@@ -1211,22 +1216,18 @@
 
     // 페이지 초기화
     function initPage() {
-      // 히어로 배경 사진 바인딩
+      // 히어로 배경 사진 바인딩 (기본 경로와 다를 때만 교체)
       const heroImg = document.getElementById('hero-bg-image');
-      if (heroImg && SITE_CONFIG.hero.image) {
-        heroImg.onerror = function () {
-          handleImgFallback(heroImg, SITE_CONFIG.hero.fallbackImage);
-        };
+      if (heroImg && SITE_CONFIG.hero.image && heroImg.getAttribute('src') !== SITE_CONFIG.hero.image) {
         heroImg.src = SITE_CONFIG.hero.image;
       }
 
       // 오시는 길 내 용머리체험관 실제 전경 사진 바인딩
       const hallImg = document.getElementById('hall-exterior-img');
       if (hallImg && SITE_CONFIG.hallPreview) {
-        hallImg.onerror = function () {
-          handleImgFallback(hallImg, SITE_CONFIG.hallPreview.fallbackImage);
-        };
-        hallImg.src = SITE_CONFIG.hallPreview.image;
+        if (hallImg.getAttribute('src') !== SITE_CONFIG.hallPreview.image) {
+          hallImg.src = SITE_CONFIG.hallPreview.image;
+        }
         document.getElementById('hall-preview-title').textContent = SITE_CONFIG.hallPreview.title;
         document.getElementById('hall-preview-caption').textContent = SITE_CONFIG.hallPreview.caption;
       }
@@ -1239,8 +1240,6 @@
       }
 
       // 기본 텍스트 바인딩
-      const navBrandEl = document.getElementById('nav-brand-name');
-      if (navBrandEl) navBrandEl.textContent = SITE_CONFIG.shortName;
       document.getElementById('nav-phone-text').textContent = SITE_CONFIG.phoneLandline;
       document.getElementById('hero-eyebrow').textContent = SITE_CONFIG.hero.eyebrow;
       document.getElementById('hero-title-main').textContent = SITE_CONFIG.hero.titleMain;
